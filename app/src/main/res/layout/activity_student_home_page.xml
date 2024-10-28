@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/HomePage"
+    android:id="@+id/StudentHomePage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/homebg"
-    tools:context=".HomeActivity">
+    tools:context=".student.StudentHomePage">
 
 
     <!-- Header: Logo, Welcome Message, and Profile Icon -->
@@ -37,17 +37,6 @@
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logoImage" />
-
-    <ImageView
-        android:id="@+id/profileIcon"
-        android:layout_width="50dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="25dp"
-        android:contentDescription="@string/profile_icon"
-        android:src="@drawable/account_profile"
-        app:layout_constraintBottom_toBottomOf="@id/welcomeMessage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/welcomeMessage" />
 
 
     <!-- Upcoming Duties Section -->

@@ -1,4 +1,4 @@
-package com.example.hkscholarhub;
+package com.example.hkscholarhub.faculty;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -20,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hkscholarhub.R;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -135,7 +136,7 @@ public class FacultyLogHours extends AppCompatActivity {
 
     // Method to handle back navigation
     public void goBackToFacultyLog(View view) {
-        Intent intent = new Intent(FacultyLogHours.this, FacultyLog.class);
+        Intent intent = new Intent(FacultyLogHours.this, FacultyAddEntry.class);
         startActivity(intent);
         finish();
     }

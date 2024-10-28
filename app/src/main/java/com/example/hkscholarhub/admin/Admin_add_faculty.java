@@ -1,4 +1,4 @@
-package com.example.hkscholarhub;
+package com.example.hkscholarhub.admin;
 
 import android.os.Bundle;
 
@@ -8,7 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class admin_add_faculty extends AppCompatActivity {
+import com.example.hkscholarhub.R;
+
+public class Admin_add_faculty extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

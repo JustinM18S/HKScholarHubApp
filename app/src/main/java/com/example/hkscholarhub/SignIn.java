@@ -1,28 +1,30 @@
 package com.example.hkscholarhub;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.RetryPolicy;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.Map;
+import com.example.hkscholarhub.admin.Admin_Home;
+import com.example.hkscholarhub.faculty.FacultyHomePage;
+import com.example.hkscholarhub.models.APIService;
+import com.example.hkscholarhub.models.LoginResponse;
+import com.example.hkscholarhub.models.RetrofitClient;
+import com.example.hkscholarhub.student.StudentHomePage;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignIn extends AppCompatActivity {
 
     private EditText email, password;
-    private final String URL = "http://10.0.2.2/HKScholarTracker/login.php";
+    private APIService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,84 +33,81 @@ public class SignIn extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+
+        apiService = RetrofitClient.getInstance(this).create(APIService.class);
+
     }
 
     public void Signin(View view) {
         String userEmail = email.getText().toString().trim();
         String userPassword = password.getText().toString().trim();
 
-        Log.d("SignIn", "Email: " + userEmail);
-        Log.d("SignIn", "Password: " + userPassword);
-
         if (!userEmail.isEmpty() && !userPassword.isEmpty()) {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                    response -> {
-                        Log.d("ServerResponse", "Raw Response: " + response);
-
-                        if (response != null && !response.isEmpty()) {
-                            try {
-                                JSONObject jsonResponse = new JSONObject(response);
-                                boolean status = jsonResponse.getBoolean("status");
-                                String message = jsonResponse.getString("message");
-
-                                if (status) {
-                                    // Fetch role from the response (e.g., "student" or "faculty")
-                                    String role = jsonResponse.getString("role");
-
-                                    // Redirect to different pages based on role
-                                    if ("student".equals(role)) {
-                                        Intent intent = new Intent(SignIn.this, HomeActivity.class);
-                                        startActivity(intent);
-                                    } else if ("faculty".equals(role)) {
-                                        Intent intent = new Intent(SignIn.this, FacultyHomePage.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(SignIn.this, "Unknown role: " + role, Toast.LENGTH_SHORT).show();
-                                    }
-
-                                    finish();
-                                } else {
-                                    Toast.makeText(SignIn.this, message, Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (JSONException e) {
-                                Log.e("SignInError", "JSON parsing error: " + response, e);
-                                Toast.makeText(SignIn.this, "Error parsing response", Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Log.e("SignInError", "Empty or null response from server");
-                            Toast.makeText(SignIn.this, "No response from server", Toast.LENGTH_SHORT).show();
-                        }
-                    },
-                    error -> {
-                        Log.e("SignInError", "Server error: " + error.getMessage(), error);
-                        Toast.makeText(SignIn.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }) {
+            Call<LoginResponse> call = apiService.login(userEmail, userPassword);
+            call.enqueue(new Callback<LoginResponse>() {
                 @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("email", userEmail);
-                    params.put("password", userPassword);
-                    return params;
+                public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        LoginResponse loginResponse = response.body();
+                        boolean status = loginResponse.isStatus();
+                        String message = loginResponse.getMessage();
+                        String userType = loginResponse.getUserType();
+                        String token = loginResponse.getToken();  // Retrieve the token
+
+                        if (status) {
+                            // Store token in SharedPreferences for later use
+                            SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("TOKEN", token);
+                            editor.apply();
+
+                            // Redirect to respective homepages
+                            handleUserRedirection(userType);
+                        } else {
+                            Toast.makeText(SignIn.this, message, Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(SignIn.this, "Invalid response from server", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            };
 
-            int socketTimeout = 30000;
-            RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeout,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-            stringRequest.setRetryPolicy(retryPolicy);
-
-            RequestQueue queue = Volley.newRequestQueue(this);
-            queue.add(stringRequest);
+                @Override
+                public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(SignIn.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         } else {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
         }
     }
-    // Method to handle navigation
+
+    private void handleUserRedirection(String userType) {
+        Toast.makeText(SignIn.this, "User Type: " + userType, Toast.LENGTH_SHORT).show();
+        // Log the user type
+        Intent intent;
+
+        switch (userType) {
+            case "student":
+                intent = new Intent(SignIn.this, StudentHomePage.class);
+                break;
+            case "faculty":
+                intent = new Intent(SignIn.this, FacultyHomePage.class);
+                break;
+            case "admin":
+                intent = new Intent(SignIn.this, Admin_Home.class);
+                break;
+            default:
+                Toast.makeText(this, "Unknown user type", Toast.LENGTH_SHORT).show();
+                return;
+        }
+
+        startActivity(intent);
+        finish();
+    }
+
     public void goToForgotPassword(View view) {
         Intent intent = new Intent(SignIn.this, Forgot_Password.class);
         startActivity(intent);
         finish();
     }
 }
-

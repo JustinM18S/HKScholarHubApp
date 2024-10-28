@@ -161,7 +161,7 @@
     <string name="add_students">Add Students</string>
     <string name="manage_profiles">Manage and update user profiles today!</string>
 
-    <string name="student">ange.devera.up@phinamed.com</string>
+    <string name="email_address">ange.devera.up@phinamed.com</string>
     <string name="edit_icon" />
     <string name="delete_icon" />
     <string name="ic_add">Add new item</string>
@@ -185,4 +185,24 @@
     <string name="enter_password">Enter Password</string>
     <string name="re_enter_password">Re-enter New Password</string>
     <string name="enter_newpassword">Enter New Password</string>
+    <string name="krystaorallo_phinmaed_com">krystaorallo@phinmaed.com</string>
+    <string name="year">Year</string>
+    <string name="Y2S1">Y2S1</string>
+    <string name="ange_devera_up_phinmaed_com">ange.devera.up@phinmaed.com</string>
+    <string name="CITE">CITE\n</string>
+    <string name="student_ic2" />
+    <string name="student_ic5">\n</string>
+    <string name="student_ic3" />
+    <string name="student_ic4" />
+    <string name="assigned_room">Assigned Room</string>
+
+    <!--string for admin profile -->
+    <string name="student_name_edit">Justin Munar</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="justinmunar_phinmaed_com">justinmunar@phinmaed.com</string>
+    <string name="munar_justin_kurt_c">Munar,Justin Kurt C.</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="cite1">CITE</string>
+    <string name="student1">Student</string>
+    <string name="professor">Professor</string>
 </resources>

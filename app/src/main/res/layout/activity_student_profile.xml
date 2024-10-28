@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bgprofile"
     android:padding="16dp"
-    tools:context=".StudentProfile">
+    tools:context=".student.StudentProfile">
 
 
 
@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="235dp"
-        android:layout_height="118dp"
+        android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/logo_desc"
@@ -37,7 +37,6 @@
         android:fontFamily="@font/poppinsbold"
         android:gravity="center_vertical"
         android:minHeight="48dp"
-        android:onClick="goBackToHomepage"
         android:text="@string/student_profile"
         android:textColor="#172815"
         android:textSize="25sp"
@@ -72,7 +71,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/poppinsbold"
             android:gravity="center"
             android:text="@string/orallo_krysta_zrylle_o"
@@ -86,9 +85,9 @@
             android:layout_marginTop="1dp"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center"
-            android:text="@string/_03_2324_031051"
+            android:text="@string/krystaorallo_phinmaed_com"
             android:textColor="#000"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -97,40 +96,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <!-- Campus -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical">
-
-            <!-- Campus Label -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsbold"
-                android:text="@string/campus"
-                android:textColor="#28731C"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <!-- Campus Value -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/poppinsmedium"
-                android:text="@string/dagupan_campus"
-                android:textColor="#000"
-                android:textSize="15sp" />
-        </LinearLayout>
 
         <!-- College -->
         <LinearLayout
@@ -172,7 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
-                android:text="@string/course"
+                android:text="@string/year"
                 android:textColor="#28731C"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -183,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="@string/bachelor_of_science_information_technology"
+                android:text="@string/Y2S1"
                 android:textColor="#000"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -263,5 +235,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.456" />
 </androidx.constraintlayout.widget.ConstraintLayout>

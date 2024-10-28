@@ -1,4 +1,4 @@
-package com.example.hkscholarhub;
+package com.example.hkscholarhub.admin;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.hkscholarhub.R;
 
 public class Admin_add_students extends AppCompatActivity {
 

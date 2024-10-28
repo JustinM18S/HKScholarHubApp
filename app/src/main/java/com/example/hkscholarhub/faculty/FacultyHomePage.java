@@ -1,4 +1,4 @@
-package com.example.hkscholarhub;
+package com.example.hkscholarhub.faculty;
 
 import android.content.Intent;
 import android.os.Build;
@@ -22,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hkscholarhub.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashMap;
@@ -42,8 +43,8 @@ public class FacultyHomePage extends AppCompatActivity {
         });
 
         // Set up BottomNavigationView to navigate between activities
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
+        BottomNavigationView bottomNavigationView1 = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView1.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.nav_home) {

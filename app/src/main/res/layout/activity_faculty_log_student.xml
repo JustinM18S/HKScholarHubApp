@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C1DBB8"
-    tools:context=".FacultyLogStudent">
+    tools:context=".faculty.FacultyLogStudent">
 
     <!-- Logo -->
 
@@ -23,14 +23,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- DTR Title with Back Icon -->
+
+
     <TextView
-        android:id="@+id/backtohome"
+        android:id="@+id/goBackToHomepage"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:drawablePadding="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="10dp"
+        android:drawablePadding="10dp"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center_vertical"
         android:onClick="goBackToHomePage"
@@ -40,10 +42,9 @@
         android:textStyle="bold"
         app:drawableStartCompat="@drawable/ic_back_arrow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImage" />
-
 
     <LinearLayout
         android:id="@+id/notificationLayout"
@@ -59,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backtohome">
+        app:layout_constraintTop_toBottomOf="@+id/goBackToHomepage">
 
         <!-- Calendar Icon -->
         <ImageView
@@ -85,20 +86,20 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/upcomingDutiesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/total_students"
         android:textColor="@android:color/black"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notificationLayout" />
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -285,6 +286,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/studentLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -339,6 +341,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/studentLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -396,7 +399,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

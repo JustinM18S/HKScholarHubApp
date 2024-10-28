@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C1DBB8"
-    tools:context=".Admin_add_students">
+    tools:context=".admin.Admin_add_students">
 
     <!-- Logo -->
 
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="@string/first_name"
+        android:text="@string/full_name"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,53 +75,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/labelFirstName" />
 
-    <TextView
-        android:id="@+id/labelLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/last_name"
-        android:textColor="#172815"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextFirstName" />
-
-    <EditText
-        android:id="@+id/editTextLastName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_add_admin"
-        android:drawableStart="@drawable/student_ic"
-        android:hint="@string/enter_last_name"
-        android:padding="12dp"
-        android:inputType="text"
-        android:textColor="#141614"
-        android:autofillHints="name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/labelLastName" />
-
     <!-- Assigned To Field -->
 
     <TextView
         android:id="@+id/labelAssignedTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/assigned_to"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextFirstName" />
 
     <Spinner
         android:id="@+id/spinnerAssignedTo"
@@ -143,13 +111,13 @@
         android:id="@+id/labelHKDutyType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/hk_duty_type_if_student"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerAssignedTo" />
 
@@ -166,23 +134,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/labelHKDutyType" />
 
-    <!-- Email Field -->
-
     <!-- Submit and Cancel Buttons -->
 
     <TextView
         android:id="@+id/labelEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/email"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHKDutyType" />
 
     <EditText
         android:id="@+id/editTextEmail"

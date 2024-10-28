@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C1DBB8"
-    tools:context=".FacultyLogHours">
+    tools:context=".faculty.FacultyLogHours">
 
 
     <!-- Duties Summary -->
@@ -47,93 +47,11 @@
 
     <!-- Duty Time Section -->
 
-    <LinearLayout
-        android:id="@+id/summaryLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:baselineAligned="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backtofacultylog">
-
-        <!-- Completed Hours -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/summary_box_bg2"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <!-- Icon and Hours in Horizontal Layout -->
-            <TextView
-                android:id="@+id/completedHours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:text="@string/_75h1"
-                android:textColor="#384D35"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                app:drawableStartCompat="@drawable/ic_time" />
-            <!-- Completed Label -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:text="@string/total_time"
-                android:textColor="#384D35"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <!-- Pending Hours -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/summary_box_bg2"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <TextView
-                android:id="@+id/pendingHours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:text="@string/_15h1"
-                android:textColor="#384D35"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                app:drawableStartCompat="@drawable/ic_time" />
-
-            <!-- Pending Label -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:text="@string/pending1"
-                android:textColor="#384D35"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </LinearLayout>
-
     <TextView
         android:id="@+id/upcomingDutiesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/duties"
         android:textColor="@android:color/black"
@@ -141,18 +59,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/summaryLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/backtofacultylog" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/duty_time_section"
         android:layout_width="384dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/timelog_bg"
         android:elevation="2dp"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upcomingDutiesTitle">
 
@@ -160,8 +78,8 @@
         <TextView
             android:id="@+id/duty_task_label"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppinsbold"
             android:text="@string/duty_task"
             android:textSize="16sp"
@@ -173,7 +91,7 @@
         <Spinner
             android:id="@+id/spinnerDutyTask"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="50dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/rounded_edittext"
             android:hint="@string/select_task"
@@ -183,24 +101,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/duty_task_label" />
 
+
         <TextView
             android:id="@+id/duty_date_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/poppinsbold"
             android:text="@string/duty_date"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerDutyTask" />
-
 
         <EditText
             android:id="@+id/editTextDutyDate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
             android:autofillHints="date"
             android:background="@drawable/rounded_edittext"
             android:clickable="true"
@@ -210,9 +129,9 @@
             android:inputType="date"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/duty_date_label" />
-
 
         <EditText
             android:id="@+id/editTextDutyStart"
@@ -234,7 +153,6 @@
             android:id="@+id/duty_start_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppinsbold"
             android:text="@string/duty_start"
             android:textSize="16sp"
@@ -272,39 +190,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/duty_end_label" />
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="242dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:backgroundTint="#4CAF50"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/save"
-            android:textColor="#172815"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDutyEnd" />
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="243dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:backgroundTint="#9E9E9E"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/cancel"
-            android:textColor="#172815"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/saveButton"
-            app:layout_constraintVertical_bias="0.423" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="193dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:backgroundTint="#4CAF50"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/save"
+        android:textColor="#172815"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/duty_time_section" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="163dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:backgroundTint="#9E9E9E"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/cancel"
+        android:textColor="#172815"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/saveButton"
+        app:layout_constraintTop_toBottomOf="@+id/duty_time_section" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

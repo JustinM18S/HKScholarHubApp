@@ -46,9 +46,6 @@
 
     <!-- Subtitle TextView -->
 
-
-    <!-- Enter code -->
-
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="match_parent"
@@ -65,8 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backtoforgotpassword" />
 
-    <!-- Verify Button -->
-
     <TextView
         android:id="@+id/codelabel"
         android:layout_width="wrap_content"
@@ -80,25 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitle" />
 
-    <!-- Resend Code -->
-
-    <Button
-        android:id="@+id/verify_button"
-        android:layout_width="161dp"
-        android:layout_height="62dp"
-        android:backgroundTint="@color/dark_green"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/verify"
-        android:textColor="#C1DBB8"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:endIconMode="password_toggle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resendcode" />
-
+    <!-- Enter code -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvcode"
         android:layout_width="336dp"
@@ -127,21 +104,24 @@
             android:textColor="@color/black"
             tools:ignore="VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/resendcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppinsregular"
-        android:minHeight="48dp"
-        android:text="@string/ResendCode"
-        android:textColor="@color/black"
-        android:textSize="15sp"
+    <!-- Verify Button -->
+    <Button
+        android:id="@+id/verify_button"
+        android:layout_width="161dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="@color/dark_green"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/verify"
+        android:textColor="#C1DBB8"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:visibility="visible"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvcode" />
+        app:layout_constraintTop_toBottomOf="@+id/tvcode"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

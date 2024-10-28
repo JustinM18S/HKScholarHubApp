@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgprofile"
-    tools:context=".FacultyProfile">
+    tools:context=".faculty.FacultyProfile">
 
     <!-- Student Profile -->
     <ImageView
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
-                android:text="@string/campus"
+                android:text="@string/department"
                 android:textColor="#28731C"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -96,10 +96,10 @@
             <!-- Campus Value -->
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="23dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="@string/dagupan_campus"
+                android:text="@string/CITE"
                 android:textColor="#000"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="@string/Email"
+                android:text="@string/ange_devera_up_phinmaed_com"
                 android:textColor="#000"
                 android:textSize="15sp" />
         </LinearLayout>

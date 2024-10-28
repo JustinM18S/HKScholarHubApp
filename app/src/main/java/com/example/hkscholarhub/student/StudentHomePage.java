@@ -1,4 +1,4 @@
-package com.example.hkscholarhub;
+package com.example.hkscholarhub.student;
 
 import android.content.Intent;
 import android.os.Build;
@@ -11,17 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.hkscholarhub.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class StudentHomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_student_home_page);
 
         // Handling window insets to adjust padding for system bars
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.HomePage), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.StudentHomePage), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);  // No bottom padding
             return insets;
@@ -33,17 +35,17 @@ public class HomeActivity extends AppCompatActivity {
 
             if (itemId == R.id.nav_home) {
                 // Navigating to HomeActivity
-                Intent homeIntent = new Intent(HomeActivity.this, HomeActivity.class);
+                Intent homeIntent = new Intent(StudentHomePage.this, StudentHomePage.class);
                 startActivity(homeIntent);
                 return true;
             } else if (itemId == R.id.nav_dtr) {
                 // Navigating to DTRActivity
-                Intent dtrIntent = new Intent(HomeActivity.this, StudentDTR.class);
+                Intent dtrIntent = new Intent(StudentHomePage.this, StudentDTR.class);
                 startActivity(dtrIntent);
                 return true;
             } else if (itemId == R.id.nav_profile) {
                 // Navigating to ProfileActivity
-                Intent profileIntent = new Intent(HomeActivity.this, StudentProfile.class);
+                Intent profileIntent = new Intent(StudentHomePage.this, StudentProfile.class);
                 startActivity(profileIntent);
                 return true;
             }
