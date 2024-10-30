@@ -22,9 +22,6 @@
             android:name=".admin.Admin_Home"
             android:exported="false" />
         <activity
-            android:name=".faculty.Faculty_DTR"
-            android:exported="false" />
-        <activity
             android:name=".admin.Admin_add_faculty"
             android:exported="false" />
         <activity

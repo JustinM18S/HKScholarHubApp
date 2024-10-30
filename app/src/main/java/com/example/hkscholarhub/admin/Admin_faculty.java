@@ -1,6 +1,8 @@
 package com.example.hkscholarhub.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hkscholarhub.R;
+import com.example.hkscholarhub.faculty.FacultyLogStudent;
 
 public class Admin_faculty extends AppCompatActivity {
 
@@ -22,5 +25,18 @@ public class Admin_faculty extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    // Method to handle back navigation
+    public void goBackToAdminHomePage(View view) {
+        Intent intent = new Intent(Admin_faculty.this, Admin_Home.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToAdminAddFaculty(View view) {
+        Intent intent = new Intent(Admin_faculty.this, Admin_add_faculty.class);
+        startActivity(intent);
+        finish();
     }
 }

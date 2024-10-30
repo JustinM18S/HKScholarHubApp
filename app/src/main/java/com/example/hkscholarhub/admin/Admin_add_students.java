@@ -1,5 +1,6 @@
 package com.example.hkscholarhub.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -68,5 +69,11 @@ public class Admin_add_students extends AppCompatActivity {
                 // Handle case where no item is selected if needed
             }
         });
+    }
+    // Method to handle navigation
+    public void goBackToAdminStudents(View view) {
+        Intent intent = new Intent(Admin_add_students.this, Admin_students.class);
+        startActivity(intent);
+        finish();
     }
 }

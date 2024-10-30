@@ -35,7 +35,7 @@
         android:fontFamily="@font/poppinsbold"
         android:gravity="center_vertical"
         android:minHeight="48dp"
-        android:onClick="goBackToFacultyHome"
+        android:onClick="goBackToAdminHome"
         android:text="@string/student_name_edit"
         android:textColor="#172815"
         android:textSize="25sp"
@@ -50,6 +50,7 @@
     <!-- Exit Button -->
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -100,17 +101,25 @@
             android:textColor="#5B8654"
             android:textSize="14sp" />
 
-        <!-- Edit Profile Button -->
-        <Button
-            android:id="@+id/btnEditProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#8EC885"
-            android:paddingHorizontal="32dp"
-            android:paddingVertical="8dp"
-            android:text="@string/edit_profile"
-            android:textColor="@android:color/black" />
     </LinearLayout>
+    <!-- Exit Button -->
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="204dp"
+        android:backgroundTint="@color/dark_green"
+        android:fontFamily="@font/poppinsbold"
+        android:onClick="exitApp"
+        android:text="@string/exit"
+        android:textColor="#C1DBB8"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.045" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.hkscholarhub.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -26,5 +27,17 @@ public class Admin_students extends AppCompatActivity {
     }
 
     public void onAddClick(View view) {
+    }
+    // Method to handle back navigation
+    public void goBackToAdminHomePage(View view) {
+        Intent intent = new Intent(Admin_students.this, Admin_Home.class);
+        startActivity(intent);
+        finish();
+    }
+    // Method to handle navigation
+    public void goBackToAdminAddStudents(View view) {
+        Intent intent = new Intent(Admin_students.this, Admin_add_students.class);
+        startActivity(intent);
+        finish();
     }
 }

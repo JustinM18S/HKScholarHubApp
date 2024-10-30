@@ -49,12 +49,16 @@ public class SignIn extends AppCompatActivity {
                 public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         LoginResponse loginResponse = response.body();
-                        boolean status = loginResponse.isStatus();
                         String message = loginResponse.getMessage();
-                        String userType = loginResponse.getUserType();
-                        String token = loginResponse.getToken();  // Retrieve the token
 
-                        if (status) {
+                        if (message.trim().equalsIgnoreCase("invalid credentials")) {
+
+                            Toast.makeText(SignIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        String userType = loginResponse.getUser().getUser_type();
+                        String token = loginResponse.getToken();  // Retrieve the token
                             // Store token in SharedPreferences for later use
                             SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -63,9 +67,6 @@ public class SignIn extends AppCompatActivity {
 
                             // Redirect to respective homepages
                             handleUserRedirection(userType);
-                        } else {
-                            Toast.makeText(SignIn.this, message, Toast.LENGTH_SHORT).show();
-                        }
                     } else {
                         Toast.makeText(SignIn.this, "Invalid response from server", Toast.LENGTH_SHORT).show();
                     }
