@@ -63,6 +63,7 @@ public class SignIn extends AppCompatActivity {
                             SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("TOKEN", token);
+
                             editor.apply();
 
                             // Redirect to respective homepages
