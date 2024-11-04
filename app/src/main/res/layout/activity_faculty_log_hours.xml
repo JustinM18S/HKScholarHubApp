@@ -28,14 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:drawablePadding="10dp"
         android:fontFamily="@font/poppinsbold"
+        android:minHeight="48dp"
+        android:onClick="goBackToFacultyLog"
         android:text="@string/AngelaDevera"
         android:textColor="#172815"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:minHeight="48dp"
-        android:onClick="goBackToFacultyLog"
-        android:drawablePadding="10dp"
         app:drawableStartCompat="@drawable/ic_back_arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.096"
@@ -63,7 +63,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/duty_time_section"
-        android:layout_width="384dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/timelog_bg"
@@ -92,15 +92,43 @@
             android:id="@+id/spinnerDutyTask"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/rounded_edittext"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_add_admin"
+            android:drawableStart="@drawable/ic_task"
             android:hint="@string/select_task"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/duty_task_label" />
-
+        <TextView
+            android:id="@+id/studentid_label"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="@string/StudentID"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDutyTask"/>
+        <EditText
+            android:id="@+id/editTextStudentId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/enter_student_id"
+            android:inputType="text"
+            android:padding="12dp"
+            android:autofillHints="text"
+            android:drawableStart="@drawable/student_ic"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_add_admin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studentid_label" />
 
         <TextView
             android:id="@+id/duty_date_label"
@@ -113,15 +141,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerDutyTask" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextStudentId" />
 
         <EditText
             android:id="@+id/editTextDutyDate"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
             android:autofillHints="date"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_add_admin"
             android:clickable="true"
             android:drawableStart="@drawable/ic_calendar"
             android:focusable="true"
@@ -137,8 +167,10 @@
             android:id="@+id/editTextDutyStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:autofillHints="time"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_add_admin"
             android:clickable="true"
             android:drawableStart="@drawable/timer_ic"
             android:focusable="true"
@@ -178,8 +210,10 @@
             android:id="@+id/editTextDutyEnd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:autofillHints="time"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/rounded_add_admin"
             android:clickable="true"
             android:drawableStart="@drawable/timer_ic"
             android:focusable="true"
@@ -190,39 +224,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/duty_end_label" />
 
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#DDECD7"
+            android:focusable="true"
+            android:fontFamily="@font/poppinsbold"
+            android:text="@string/save"
+            android:textColor="#172815"
+            android:textSize="15sp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDutyEnd" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="44dp"
+            android:backgroundTint="#DDECD7"
+            android:focusable="true"
+            android:fontFamily="@font/poppinsbold"
+            android:text="@string/cancel"
+            android:textColor="#172815"
+            android:textSize="15sp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/saveButton"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDutyEnd" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="193dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:backgroundTint="#4CAF50"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/save"
-        android:textColor="#172815"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/duty_time_section" />
-
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="163dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="1"
-        android:backgroundTint="#9E9E9E"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/cancel"
-        android:textColor="#172815"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/saveButton"
-        app:layout_constraintTop_toBottomOf="@+id/duty_time_section" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

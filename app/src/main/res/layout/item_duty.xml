@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@drawable/dtr_bg"
+    android:elevation="4dp">
+
+    <!-- Calendar Icon -->
+    <ImageView
+        android:id="@+id/calendarIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/calendar1" />
+
+    <!-- Duty Details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <!-- Time Range Text (Start and End Time) -->
+        <TextView
+            android:id="@+id/timeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsbold"
+            android:text="7:00 AM - 12:00 PM"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Date Text -->
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="25/10/24"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <!-- Task Text -->
+        <TextView
+            android:id="@+id/taskTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Announcement"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Total Hours -->
+    <TextView
+        android:id="@+id/totalHoursTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="center"
+        android:text="5h 0m"
+        android:textColor="#172815"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>

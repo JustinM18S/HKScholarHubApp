@@ -16,7 +16,7 @@
         android:layout_width="169dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="0dp"
         android:contentDescription="@string/logo_desc"
         android:src="@drawable/applogo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +30,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:drawablePadding="8dp"
+        android:gravity="center"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/add_professor"
         android:textColor="@android:color/black"
@@ -60,7 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
         android:autofillHints="name"
         android:background="@drawable/rounded_add_admin"
@@ -68,31 +69,35 @@
         android:hint="@string/enter_full_name"
         android:padding="12dp"
         android:inputType="text"
+        android:maxWidth="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/labelFullName" />
 
+
     <TextView
         android:id="@+id/labelEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/email"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextFullName" />
+
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints="email"
         android:background="@drawable/rounded_add_admin"
         android:drawableStart="@drawable/student_ic"
         android:hint="@string/enter_email"
@@ -100,122 +105,156 @@
         android:padding="12dp"
         android:textColor="#000000"
         android:textColorHint="#707770"
-        android:autofillHints="email"
+        android:maxWidth="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/labelEmail" />
 
-
     <TextView
         android:id="@+id/labelDepartment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="@string/department"
+        android:text="@string/faculty_id"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextEmail" />
-    <Spinner
-        android:id="@+id/spinnerDepartment"
+    <EditText
+        android:id="@+id/facultyid"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints="name"
+        android:inputType="text"
+        android:hint="@string/enter_facultyid"
         android:background="@drawable/rounded_add_admin"
-        android:drawableStart="@drawable/student_ic"
         android:padding="12dp"
+        android:maxWidth="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/labelDepartment" />
 
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/passwordlabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="@string/password"
+        android:text="@string/password1"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerDepartment" />
-    <EditText
+        app:layout_constraintTop_toBottomOf="@id/facultyid" />
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordfaculty"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_add_admin"
-        android:drawableStart="@drawable/ic_password"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textColorHint="#707770"
-        android:autofillHints="email"
+        android:layout_marginTop="2dp"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password" />
+        app:layout_constraintTop_toBottomOf="@id/passwordlabel">
+
+        <EditText
+            android:id="@+id/enterpasswordfaculty"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_add_admin"
+            android:drawableStart="@drawable/ic_password"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHint="#707770"
+            android:autofillHints="email"
+            android:maxWidth="300dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/re_enterpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/re_enter_password"
         android:textColor="#172815"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordfaculty" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/re_enterpass"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_add_admin"
-        android:drawableStart="@drawable/ic_password"
-        android:hint="@string/enter_newpassword"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textColorHint="#707770"
-        android:autofillHints="email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/re_enterpassword" />
-    <Button
-        android:id="@+id/btnSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="48dp"
-        android:backgroundTint="#9CC895"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/submit"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="2dp"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/re_enterpass" />
+        app:layout_constraintTop_toBottomOf="@id/re_enterpassword">
+
+        <EditText
+            android:id="@+id/enter_confirmedpass"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_add_admin"
+            android:drawableStart="@drawable/ic_password"
+            android:hint="@string/enter_newpassword"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHint="#707770"
+            android:autofillHints="email"
+            android:maxWidth="300dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/usertype_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/user_type"
+        android:textColor="#172815"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/re_enterpass" />
+
+    <Spinner
+        android:id="@+id/usertype"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:autofillHints="text"
+        android:background="@drawable/rounded_add_admin"
+        android:hint="@string/enter_user_role"
+        android:inputType="text"
+        android:padding="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="32dp"
+        android:maxWidth="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usertype_label" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -224,14 +263,37 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="48dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#9CC895"
         android:fontFamily="@font/poppinsbold"
+        android:maxWidth="320dp"
         android:text="@string/cancel2"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSubmit"
-        app:layout_constraintTop_toBottomOf="@+id/re_enterpass" />
+        app:layout_constraintTop_toBottomOf="@+id/usertype"
+        app:layout_constraintVertical_bias="0.706" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#9CC895"
+        android:fontFamily="@font/poppinsbold"
+        android:maxWidth="320dp"
+        android:text="@string/submit"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usertype"
+        app:layout_constraintVertical_bias="0.706" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

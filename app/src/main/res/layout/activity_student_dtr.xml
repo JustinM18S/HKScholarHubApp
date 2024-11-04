@@ -80,237 +80,246 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/dtrDetailsLayout"
+    <ScrollView
+        android:id="@+id/dtrstudent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
-        android:background="@drawable/summary_box_background"
-        android:orientation="vertical"
-        android:padding="15dp"
+        android:layout_height="300dp"
+        android:fillViewport="true"
+        android:scrollbarSize="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationLayout">
+        app:layout_constraintTop_toBottomOf="@+id/notificationLayout"
+        app:layout_constraintVertical_bias="0.111">
 
-        <!-- Record Row 1 -->
         <LinearLayout
+            android:id="@+id/dtrDetailsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="8dp">
-            <!--calendar icon -->
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/summary_box_background"
+            android:orientation="vertical"
+            android:padding="15dp">
 
-            <ImageView
-                android:id="@+id/calendarIcon1"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/calendar1" />
-
+            <!-- Record Row 1 -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="53dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+                <!-- Calendar icon -->
+                <ImageView
+                    android:id="@+id/calendarIcon1"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/calendar1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="53dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/timeText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="@string/dtr_hour"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dateText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/dtr_date"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/timeText1"
+                    android:id="@+id/totalHours1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:text="@string/dtr_hour"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/dateText1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:text="@string/dtr_date"
-                    android:textColor="#000000"
+                    android:text="@string/dtr_hour1"
+                    android:textColor="#172815"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/totalHours1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="@string/dtr_hour1"
-                android:textColor="#172815"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <!--Second Row-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/calendarIcon2"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/calendar1" />
-
+            <!-- Second Row -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginTop="3dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/calendarIcon2"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/calendar1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/timeText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="@string/dtr_hour2"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dateText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/dtr_date2"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/timeText2"
+                    android:id="@+id/totalHours2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:text="@string/dtr_hour2"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/dateText2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:text="@string/dtr_date2"
-                    android:textColor="#000000"
+                    android:text="@string/dtr_hhmm2"
+                    android:textColor="#172815"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/totalHours2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="@string/dtr_hhmm2"
-                android:textColor="#172815"
-                android:textSize="14sp" />
-        </LinearLayout>
-        <!--Third Row-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/calendarIcon3"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/todo3"
-                android:src="@drawable/calendar1" />
-
+            <!-- Third Row -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginTop="3dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/calendarIcon3"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/todo3"
+                    android:src="@drawable/calendar1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/timeText3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="@string/dtr_hour3"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dateText3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/dtr_date3"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/timeText3"
+                    android:id="@+id/totalHours3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:text="@string/dtr_hour3"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/dateText3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:text="@string/dtr_date3"
-                    android:textColor="#000000"
+                    android:text="@string/dtr_hhmm3"
+                    android:textColor="#172815"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/totalHours3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="@string/dtr_hhmm3"
-                android:textColor="#172815"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <!--Fourth Row-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/calendarIcon4"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/todo4"
-                android:src="@drawable/calendar1" />
-
+            <!-- Fourth Row -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginTop="3dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/calendarIcon4"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/todo4"
+                    android:src="@drawable/calendar1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/timeText4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="@string/dtr_hour4"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dateText4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:text="@string/dtr_date4"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/timeText4"
+                    android:id="@+id/totalHours4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:text="@string/dtr_hour4"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/dateText4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:text="@string/dtr_date4"
-                    android:textColor="#000000"
+                    android:text="@string/dtr_hhmm4"
+                    android:textColor="#172815"
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/totalHours4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="@string/dtr_hhmm4"
-                android:textColor="#172815"
-                android:textSize="14sp" />
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Summary Details -->
-
-
-    <!-- Bottom Navigation Bar -->
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/summaryLayout"
@@ -325,7 +334,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dtrDetailsLayout"
+        app:layout_constraintTop_toBottomOf="@+id/dtrstudent"
         tools:ignore="VisualLintBounds">
 
         <!-- Rendered Duty Hours -->

@@ -167,7 +167,7 @@
     <string name="ic_add">Add new item</string>
     <string name="submit">SUBMIT</string>
     <string name="cancel2">CANCEL</string>
-    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_first_name">Enter Full Name</string>
     <string name="add_student">Add Student</string>
     <string name="enter_email">Enter Email</string>
     <string name="user_role">User Role:</string>
@@ -175,16 +175,16 @@
     <string name="assigned_to">Assigned to:</string>
     <string name="email">Email:</string>
     <string name="first_name">First Name:</string>
-    <string name="hk_duty_type_if_student">HK Duty Type (if student):</string>
+    <string name="hk_duty_type_if_student">HK Duty Type:</string>
     <string name="last_name">Last Name:</string>
     <string name="add_professor">Add Professor</string>
     <string name="total_professor">Total Professor:</string>
     <string name="full_name">Full Name:</string>
     <string name="enter_full_name">Enter Fullname</string>
-    <string name="department">Department:</string>
+    <string name="faculty_id">Faculty ID:</string>
     <string name="enter_password">Enter Password</string>
-    <string name="re_enter_password">Re-enter New Password</string>
-    <string name="enter_newpassword">Enter New Password</string>
+    <string name="re_enter_password">Confirm Password:</string>
+    <string name="enter_newpassword">Enter Confirmed Password</string>
     <string name="krystaorallo_phinmaed_com">krystaorallo@phinmaed.com</string>
     <string name="year">Year</string>
     <string name="Y2S1">Y2S1</string>
@@ -205,4 +205,25 @@
     <string name="cite1">CITE</string>
     <string name="student1">Student</string>
     <string name="professor">Professor</string>
+    <string name="enter_facultyid">Enter Faculty ID</string>
+    <string name="user_type">User Role:</string>
+    <string name="enter_user_role">User Role\n</string>
+    <!--string for admin -->
+    <string name="password1">Password:</string>
+    <string name="enter_user_role1">Select User Role</string>
+    <string name="department">Department</string>
+    <string name="student_id">Student ID:</string>
+    <string name="enter_studentid">Enter Student ID</string>
+    <string name="angeladevera_gmail_com">angeladevera@gmail.com</string>
+    <string name="justinkurtmunar_gmail_com">justinkurtmunar@gmail.com</string>
+    <string name="krystaorallo_gmail_com">krystaorallo@gmail.com</string>
+    <string name="kimphilip_gmail_com">kimphilip@gmail.com</string>
+    <string name="kurtaguilar_gmail_com">kurtaguilar@gmail.com</string>
+    <string name="StudentID">Student ID:\n</string>
+    <string name="enter_student_id">Enter Student ID</string>
+
+    <string-array name="user_roles">
+        <item>faculty</item>
+        <item>student</item>
+    </string-array>
 </resources>

@@ -52,6 +52,8 @@ public class StudentDTR extends AppCompatActivity {
             return false;
         });
 
+        bottomNavigationView.setSelectedItemId(R.id.nav_dtr);
+
         enableImmersiveMode();
     }
 

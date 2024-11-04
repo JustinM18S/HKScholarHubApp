@@ -148,10 +148,11 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:layout_marginTop="0dp"
         android:fillViewport="true"
         android:padding="16dp"
+        android:scrollbarSize="8dp"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +165,8 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/dtr_bg"
             android:orientation="vertical"
-            android:padding="15dp">
+            android:padding="15dp"
+            android:paddingBottom="25dp">
 
             <!-- Record Row 1 -->
             <LinearLayout

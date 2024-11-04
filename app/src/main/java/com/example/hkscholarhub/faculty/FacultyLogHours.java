@@ -10,28 +10,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.hkscholarhub.R;
-
-import java.util.HashMap;
-import java.util.Locale;
+import com.example.hkscholarhub.models.APIService;
+import com.example.hkscholarhub.models.AddTaskRequest;
+import com.example.hkscholarhub.models.AddTaskResponse;
+import com.example.hkscholarhub.models.RetrofitClient;
 
 import java.util.Calendar;
-import java.util.Map;
+import java.util.Locale;
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class FacultyLogHours extends AppCompatActivity {
 
     private Spinner spinnerDutyTask;
-    private EditText editTextDutyDate, editTextDutyStart, editTextDutyEnd;
+    private EditText editTextStudentId, editTextDutyDate, editTextDutyStart, editTextDutyEnd;
     private Calendar calendar;
 
     @Override
@@ -49,6 +54,7 @@ public class FacultyLogHours extends AppCompatActivity {
 
         // Initialize UI components
         spinnerDutyTask = findViewById(R.id.spinnerDutyTask);
+        editTextStudentId = findViewById(R.id.editTextStudentId);
         editTextDutyDate = findViewById(R.id.editTextDutyDate);
         editTextDutyStart = findViewById(R.id.editTextDutyStart);
         editTextDutyEnd = findViewById(R.id.editTextDutyEnd);
@@ -56,7 +62,7 @@ public class FacultyLogHours extends AppCompatActivity {
         Button cancelButton = findViewById(R.id.cancelButton);
 
         // Set up the spinner with sample tasks
-        String[] tasks = {"Select Task", "Checking of Activity ", "Attendance Monitoring", "Records Score", "Facilitate Classroom", "Announcement"};
+        String[] tasks = {"Select Task", "Checking of Activity", "Attendance Monitoring", "Records Score", "Facilitate Classroom", "Announcement"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tasks);
         spinnerDutyTask.setAdapter(adapter);
 
@@ -74,14 +80,16 @@ public class FacultyLogHours extends AppCompatActivity {
 
         // Save Button action
         saveButton.setOnClickListener(v -> {
+            String studentIdString = editTextStudentId.getText().toString();
             String task = spinnerDutyTask.getSelectedItem().toString();
             String date = editTextDutyDate.getText().toString();
             String startTime = editTextDutyStart.getText().toString();
             String endTime = editTextDutyEnd.getText().toString();
 
-            if (validateInputs(task, date, startTime, endTime)) {
-                // Save logic (e.g., to database)
-                saveDutyToServer(task, date, startTime, endTime);
+            if (validateInputs(studentIdString, task, date, startTime, endTime)) {
+                long studentId = Long.parseLong(studentIdString);
+                // Save logic to backend
+                saveDutyToServer(studentId, task, date, startTime, endTime);
             } else {
                 Toast.makeText(FacultyLogHours.this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
             }
@@ -91,6 +99,7 @@ public class FacultyLogHours extends AppCompatActivity {
         cancelButton.setOnClickListener(v -> {
             // Clear all inputs
             spinnerDutyTask.setSelection(0);
+            editTextStudentId.setText("");
             editTextDutyDate.setText("");
             editTextDutyStart.setText("");
             editTextDutyEnd.setText("");
@@ -106,8 +115,9 @@ public class FacultyLogHours extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 FacultyLogHours.this,
                 (view, selectedYear, selectedMonth, selectedDay) -> {
-                    String date = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                    String date = String.format(Locale.getDefault(), "%04d-%02d-%02d", selectedYear, (selectedMonth + 1), selectedDay);
                     editTextDutyDate.setText(date);
+
                 },
                 year, month, day);
         datePickerDialog.show();
@@ -121,17 +131,61 @@ public class FacultyLogHours extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 FacultyLogHours.this,
                 (view, selectedHour, selectedMinute) -> {
-                    // Use Locale in the String format
-                    String time = String.format(Locale.getDefault(), "%02d:%02d", selectedHour, selectedMinute);
+                    String amPm = "AM";
+                    int hourForDisplay = selectedHour;
+
+                    if (selectedHour >= 12) {
+                        amPm = "PM";
+                        if (selectedHour > 12) {
+                            hourForDisplay = selectedHour - 12; // Convert 24-hour time to 12-hour time
+                        }
+                    } else if (selectedHour == 0) {
+                        hourForDisplay = 12; // Convert midnight hour to 12 AM
+                    }
+
+                    String time = String.format(Locale.getDefault(), "%02d:%02d %s", hourForDisplay, selectedMinute, amPm);
                     editText.setText(time);
                 },
-                hour, minute, true);
+                hour, minute, false // Set false to show the AM/PM selector
+        );
         timePickerDialog.show();
     }
 
+
     // Validate inputs before saving
-    private boolean validateInputs(String task, String date, String startTime, String endTime) {
-        return !(task.equals("Select Task") || date.isEmpty() || startTime.isEmpty() || endTime.isEmpty());
+    private boolean validateInputs(String studentId, String task, String date, String startTime, String endTime) {
+        return !(studentId.isEmpty() || task.equals("Select Task") || date.isEmpty() || startTime.isEmpty() || endTime.isEmpty());
+    }
+
+    // Save Duty to Server using Retrofit
+    private void saveDutyToServer(long studentId, String task, String date, String startTime, String endTime) {
+        Retrofit retrofit = RetrofitClient.getInstance(this);
+        APIService apiService = retrofit.create(APIService.class);
+
+        AddTaskRequest request = new AddTaskRequest(studentId, task, date, startTime, endTime);
+        Call<AddTaskResponse> call = apiService.addTask(request);
+
+        call.enqueue(new Callback<AddTaskResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<AddTaskResponse> call, @NonNull Response<AddTaskResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(FacultyLogHours.this, "Duty log saved successfully: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        String errorBody = Objects.requireNonNull(response.errorBody()).string();
+                        Toast.makeText(FacultyLogHours.this, "Failed to save duty log: " + errorBody, Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(FacultyLogHours.this, "Failed to save duty log, and error body could not be read.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<AddTaskResponse> call, @NonNull Throwable t) {
+                Toast.makeText(FacultyLogHours.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Method to handle back navigation
@@ -140,30 +194,4 @@ public class FacultyLogHours extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    private void saveDutyToServer(String task, String date, String startTime, String endTime) {
-        String url = "http://10.0.2.2/HKScholarTracker/save_duty_log.php "; // Replace with your actual PHP URL
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                response -> {
-                    Toast.makeText(FacultyLogHours.this, "Duty log saved successfully", Toast.LENGTH_SHORT).show();
-                },
-                error -> {
-                    Toast.makeText(FacultyLogHours.this, "Failed to save duty log", Toast.LENGTH_SHORT).show();
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("task", task);
-                params.put("date", date);
-                params.put("start_time", startTime);
-                params.put("end_time", endTime);
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
-    }
-
 }

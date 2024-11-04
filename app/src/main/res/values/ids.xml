@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="totalHoursTextView" type="id" />
+    <item name="timeTextView" type="id" />
+    <item name="dateTextView" type="id" />
+    <item name="taskTextView" type="id" />
+</resources>

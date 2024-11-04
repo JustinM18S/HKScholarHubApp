@@ -97,6 +97,7 @@
         android:scrollbars="horizontal"
         android:fillViewport="true"
         android:padding="20dp"
+        android:scrollbarSize="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upcomingDutiesTitle">
