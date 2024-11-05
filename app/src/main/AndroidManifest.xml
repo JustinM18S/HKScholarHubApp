@@ -16,6 +16,12 @@
         android:theme="@style/Theme.HKScholarHub"
         tools:targetApi="31">
         <activity
+            android:name=".admin.Admin_Assign_Student"
+            android:exported="false" />
+        <activity
+            android:name=".activity_assign_student"
+            android:exported="false" />
+        <activity
             android:name=".admin.Admin_Profile"
             android:exported="false" />
         <activity

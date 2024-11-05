@@ -10,4 +10,8 @@ public class UserObject {
 
     public void setUser_type(String user_type) {
 }
+
+    public long getFaculty_id() {
+        return 0;
+    }
 }

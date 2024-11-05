@@ -35,7 +35,6 @@ public class SignIn extends AppCompatActivity {
         password = findViewById(R.id.password);
 
         apiService = RetrofitClient.getInstance(this).create(APIService.class);
-
     }
 
     public void Signin(View view) {
@@ -52,21 +51,28 @@ public class SignIn extends AppCompatActivity {
                         String message = loginResponse.getMessage();
 
                         if (message.trim().equalsIgnoreCase("invalid credentials")) {
-
                             Toast.makeText(SignIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        if (message.trim().equalsIgnoreCase("email not verified")) {
+                            Toast.makeText(SignIn.this, "Please verify your email before logging in", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        if (loginResponse.getUser() == null) {
+                            Toast.makeText(SignIn.this, "User not found in response", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         String userType = loginResponse.getUser().getUser_type();
                         String token = loginResponse.getToken();  // Retrieve the token
-                            // Store token in SharedPreferences for later use
-                            SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("TOKEN", token);
-                            editor.apply();
 
-                            // Redirect to respective homepages
-                            handleUserRedirection(userType);
+                        // Store the token in SharedPreferences for authenticated requests later
+                        saveToken(token);
+
+                        // Redirect to respective homepages
+                        handleUserRedirection(userType);
                     } else {
                         Toast.makeText(SignIn.this, "Invalid response from server", Toast.LENGTH_SHORT).show();
                     }
@@ -84,7 +90,6 @@ public class SignIn extends AppCompatActivity {
 
     private void handleUserRedirection(String userType) {
         Toast.makeText(SignIn.this, "User Type: " + userType, Toast.LENGTH_SHORT).show();
-        // Log the user type
         Intent intent;
 
         switch (userType) {
@@ -104,6 +109,13 @@ public class SignIn extends AppCompatActivity {
 
         startActivity(intent);
         finish();
+    }
+
+    private void saveToken(String token) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("TOKEN", token);
+        editor.apply();
     }
 
     public void goToForgotPassword(View view) {

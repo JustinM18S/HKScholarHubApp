@@ -40,7 +40,7 @@
         android:id="@+id/summaryLayout"
         android:layout_width="363dp"
         android:layout_height="135dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="50dp"
         android:baselineAligned="false"
         android:gravity="center"
         android:orientation="horizontal"
@@ -48,10 +48,6 @@
         app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notificationLayout">
-
-        <!-- Total Time TextView -->
-
-        <!-- Pending Hours TextView -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -64,7 +60,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/completedHours"
+                android:id="@+id/totalstudents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -74,7 +70,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/completedLabel"
+                android:id="@+id/totalstudentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -94,7 +90,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/pendingHours"
+                android:id="@+id/totalfaculties"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -104,7 +100,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/pendingLabel"
+                android:id="@+id/totalfacultiesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -152,6 +148,98 @@
             android:src="@drawable/hklogo" />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/summaryLayout"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/select_student"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/studentSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_add_admin"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/select_faculty"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/facultySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_add_admin"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/select_duty_type"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/dutyTypeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_add_admin"
+                android:fontFamily="@font/poppinssemibold"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/select_hk_type"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/hkTypeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_add_admin"
+                android:fontFamily="@font/poppinssemibold"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/assignButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#8EC885"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/black"
+                android:text="@string/assign_student" />
+        </LinearLayout>
+    </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/adminbottomNavigationView"
         android:layout_width="match_parent"
@@ -166,10 +254,7 @@
         app:itemIconSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/admin_bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

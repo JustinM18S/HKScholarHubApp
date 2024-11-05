@@ -43,15 +43,12 @@ public class Admin_add_students extends AppCompatActivity {
         spinnerHKDutyType = findViewById(R.id.spinnerHKDutyType);
         btnSubmit = findViewById(R.id.btnSubmit);
 
+
         // Set up HK Duty Type Spinner
         String[] hkDutyTypes = {"HK25", "HK50", "HK75"};
         ArrayAdapter<String> hkDutyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, hkDutyTypes);
         hkDutyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerHKDutyType.setAdapter(hkDutyAdapter);
-
-        // Make sure Student ID and HK Duty Type fields are always visible for student role
-        editTextStudentId.setVisibility(View.VISIBLE);
-        spinnerHKDutyType.setVisibility(View.VISIBLE);
 
         // Handle the submit button click
         btnSubmit.setOnClickListener(v -> {
@@ -69,7 +66,7 @@ public class Admin_add_students extends AppCompatActivity {
                 return;
             }
 
-            createUserAccount(name, email, password, confirmPassword, userType, studentId,null, hkType);
+            createUserAccount(name, email, password, confirmPassword, userType, studentId, null, hkType);
         });
     }
 
@@ -86,6 +83,10 @@ public class Admin_add_students extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(Admin_add_students.this, "User created successfully: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
+                    // Redirect back to Admin_students activity
+                    Intent intent = new Intent(Admin_add_students.this, Admin_students.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     try {
                         String errorBody = response.errorBody().string();
@@ -102,7 +103,6 @@ public class Admin_add_students extends AppCompatActivity {
             }
         });
     }
-
 
     // Method to handle back navigation
     public void goBackToAdminStudents(View view) {

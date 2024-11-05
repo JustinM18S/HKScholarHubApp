@@ -153,9 +153,9 @@
     <!--string for admin homepage -->
     <string name="Hi_Admin">Hi Admin!</string>
     <string name="admin_dashboard">Admin Dashboard</string>
-    <string name="admin_hk_students">298</string>
+    <string name="admin_hk_students" />
     <string name="admin_total_students">Total of HK Students</string>
-    <string name="admin_hk_faculty">298</string>
+    <string name="admin_hk_faculty" />
     <string name="admin_total_faculty">Total of Faculties</string>
     <string name="admin_users">Users</string>
     <string name="add_students">Add Students</string>
@@ -221,6 +221,14 @@
     <string name="kurtaguilar_gmail_com">kurtaguilar@gmail.com</string>
     <string name="StudentID">Student ID:\n</string>
     <string name="enter_student_id">Enter Student ID</string>
+    <string name="useremail_example_com">useremail@example.com</string>
+    <string name="select_duty_type">Select Duty Type</string>
+    <string name="select_faculty">Select Faculty</string>
+    <string name="select_student">Select Student</string>
+    <string name="select_hk_type">Select HK Type</string>
+    <string name="assign_student">Assign Student</string>
+    <string name="student_name">Student Name</string>
+    <string name="student12">Student</string>
 
     <string-array name="user_roles">
         <item>faculty</item>

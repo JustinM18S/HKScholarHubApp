@@ -46,7 +46,7 @@
         android:id="@+id/labelFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/full_name"
         android:textColor="#172815"
@@ -225,36 +225,6 @@
             android:maxWidth="300dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/usertype_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="@string/user_type"
-        android:textColor="#172815"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/re_enterpass" />
-
-    <Spinner
-        android:id="@+id/usertype"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:autofillHints="text"
-        android:background="@drawable/rounded_add_admin"
-        android:hint="@string/enter_user_role"
-        android:inputType="text"
-        android:padding="12dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="32dp"
-        android:maxWidth="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usertype_label" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -273,7 +243,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSubmit"
-        app:layout_constraintTop_toBottomOf="@+id/usertype"
+        app:layout_constraintTop_toBottomOf="@+id/re_enterpassword"
         app:layout_constraintVertical_bias="0.706" />
 
     <Button
@@ -293,7 +263,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnCancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usertype"
+        app:layout_constraintTop_toBottomOf="@+id/re_enterpassword"
         app:layout_constraintVertical_bias="0.706" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

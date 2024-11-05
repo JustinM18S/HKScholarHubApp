@@ -40,7 +40,7 @@ public class Admin_add_faculty extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
 
 
-        // Set up the Submit button click listener
+        // Handle the submit button click
         btnSubmit.setOnClickListener(v -> {
             // Get the input values from UI fields
             String name = editTextFullName.getText().toString().trim();
@@ -55,13 +55,12 @@ public class Admin_add_faculty extends AppCompatActivity {
                 return;
             }
 
-
             // Call the method to create user account for faculty
             createUserAccount(name, email, password, confirmPassword, "faculty", facultyId);
         });
     }
 
-    private void createUserAccount(String name, String email, String password,String confirmPassword, String userType, String facultyId) {
+    private void createUserAccount(String name, String email, String password, String confirmPassword, String userType, String facultyId) {
         Retrofit retrofit = RetrofitClient.getInstance(this);
         APIService apiService = retrofit.create(APIService.class);
 
@@ -72,9 +71,14 @@ public class Admin_add_faculty extends AppCompatActivity {
         // Execute the API call asynchronously
         call.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(@NonNull Call<UserResponse> call,@NonNull Response<UserResponse> response) {
+            public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(Admin_add_faculty.this, "Faculty created successfully: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    // Redirect back to Admin_faculty activity
+                    Intent intent = new Intent(Admin_add_faculty.this, Admin_faculty.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     try {
                         String errorBody = response.errorBody().string();
@@ -86,12 +90,11 @@ public class Admin_add_faculty extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<UserResponse> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
                 Toast.makeText(Admin_add_faculty.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
     // Method to handle back navigation
     public void goBackToAdminFaculty(View view) {

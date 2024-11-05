@@ -3,6 +3,7 @@ package com.example.hkscholarhub.faculty;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -157,35 +158,43 @@ public class FacultyLogHours extends AppCompatActivity {
         return !(studentId.isEmpty() || task.equals("Select Task") || date.isEmpty() || startTime.isEmpty() || endTime.isEmpty());
     }
 
-    // Save Duty to Server using Retrofit
     private void saveDutyToServer(long studentId, String task, String date, String startTime, String endTime) {
         Retrofit retrofit = RetrofitClient.getInstance(this);
         APIService apiService = retrofit.create(APIService.class);
 
         AddTaskRequest request = new AddTaskRequest(studentId, task, date, startTime, endTime);
-        Call<AddTaskResponse> call = apiService.addTask(request);
 
-        call.enqueue(new Callback<AddTaskResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<AddTaskResponse> call, @NonNull Response<AddTaskResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(FacultyLogHours.this, "Duty log saved successfully: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                } else {
-                    try {
-                        String errorBody = Objects.requireNonNull(response.errorBody()).string();
-                        Toast.makeText(FacultyLogHours.this, "Failed to save duty log: " + errorBody, Toast.LENGTH_SHORT).show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(FacultyLogHours.this, "Failed to save duty log, and error body could not be read.", Toast.LENGTH_SHORT).show();
+        // Retrieve token from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        String token = sharedPreferences.getString("TOKEN", "");
+
+        if (!token.isEmpty()) {
+            // Append "Bearer " to the token for authorization
+            Call<AddTaskResponse> call = apiService.addTask("Bearer " + token, request);
+            call.enqueue(new Callback<AddTaskResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<AddTaskResponse> call, @NonNull Response<AddTaskResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        Toast.makeText(FacultyLogHours.this, "Duty log saved successfully: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        try {
+                            String errorBody = Objects.requireNonNull(response.errorBody()).string();
+                            Toast.makeText(FacultyLogHours.this, "Failed to save duty log: " + errorBody, Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(FacultyLogHours.this, "Failed to save duty log, and error body could not be read.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(@NonNull Call<AddTaskResponse> call, @NonNull Throwable t) {
-                Toast.makeText(FacultyLogHours.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(@NonNull Call<AddTaskResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(FacultyLogHours.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(FacultyLogHours.this, "No valid token found. Please log in again.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Method to handle back navigation

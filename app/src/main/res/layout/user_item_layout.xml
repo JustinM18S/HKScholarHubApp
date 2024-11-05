@@ -7,6 +7,13 @@
     android:background="#DDECD7"
     android:padding="8dp">
 
+
+    <!-- User ID (Hidden) -->
+    <TextView
+        android:id="@+id/user_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -33,7 +40,7 @@
             android:id="@+id/user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="useremail@example.com"
+            android:text="@string/useremail_example_com"
             android:textColor="@android:color/black"
             android:textSize="11sp"
             android:fontFamily="@font/poppinsmedium" />

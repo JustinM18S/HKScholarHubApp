@@ -276,35 +276,6 @@
                     android:textColor="#000000"
                     android:textColorHint="#707770" />
             </com.google.android.material.textfield.TextInputLayout>
-            <!-- User Role Field -->
-
-            <TextView
-                android:id="@+id/labelUserRole"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="@string/user_role"
-                android:textColor="#172815"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.096"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/re_enterpass" />
-
-            <Spinner
-                android:id="@+id/spinnerUserRole"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/rounded_add_admin"
-                android:padding="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelUserRole" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
